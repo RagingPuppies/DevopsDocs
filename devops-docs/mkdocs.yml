@@ -1,0 +1,12 @@
+site_name: RagingPuppies DevOps Docs
+nav:
+  - Home: index.md
+  - Projects:
+    - Code Quality (CI):
+      - 'Apache Airflow': 'projects/code_quality/airflow.md'
+      - 'FluxCD': 'projects/code_quality/flux.md'
+      - 'Helm': 'projects/code_quality/helm.md'
+  - Commands:
+    - 'Kafka': 'commands/kafka.md'
+theme: 
+  name: material
