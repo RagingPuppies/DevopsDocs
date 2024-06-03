@@ -14,7 +14,7 @@ First, create a virtual environment:
 Next, create a `dev-requirements.txt` file with the following packages and specific versions to avoid compatibility issues:
 
     pre-commit==3.7.1
-    ruff==0.4.6
+    ruff==0.4.7
 
 * `ruff`: A Rust-based, lightning-fast linter and formatter.
 * `pre-commit`: A Python package that allows you to hook Ruff, which will run before commits are applied.
@@ -27,10 +27,10 @@ Create a `.pre-commit-config.yaml` file with our hooks (for now, Ruff):
 
     repos:
     - repo: https://github.com/astral-sh/ruff-pre-commit
-      rev: v0.4.6
-      hooks:
+    rev: v0.4.7
+    hooks:
         - id: ruff
-    #      args: [ --fix ]  # Uncomment to enable auto-fixing
+        args: [ --fix ]
         - id: ruff-format
 
 You can remove the comment from the `args` if you want any violated rules to be auto-fixed. Remember to always review the code!
@@ -41,22 +41,17 @@ Now, install the pre-commit hooks:
 
 To modify the default Ruff settings, create a `ruff.toml` file:
 
+    output-format = "concise"
+    indent-width = 4
+
+    [format]
+    indent-style = "space"
+    docstring-code-line-length = 80
+    quote-style = "double"
+
     [lint]
-    ignore = ["E402"]  # E402: Module level import not at top of file (adjust based on project needs)
-    select = [
-        # pycodestyle
-        "E",
-        # Pyflakes
-        "F",
-        # pyupgrade
-        "UP",
-        # flake8-bugbear
-        "B",
-        # flake8-simplify
-        "SIM",
-        # isort
-        "I",
-    ]
+    ignore = ["E402"]
+    select = ["E4", "E7", "E9", "F", "B", "Q"]
 
 Here, we selected to ignore a certain rule and added a set of linters. You can also run `ruff check .` to lint the entire repository. Additionally, you can run `ruff rule E402` to get more information on the excluded rule.
 

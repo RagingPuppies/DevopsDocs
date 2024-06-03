@@ -8,5 +8,7 @@ nav:
       - 'Helm': 'projects/code_quality/helm.md'
   - Commands:
     - 'Kafka': 'commands/kafka.md'
+  - Issues:
+    - 'flux': 'issues/flux.md'
 theme: 
   name: material
